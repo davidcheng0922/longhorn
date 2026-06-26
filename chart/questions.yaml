@@ -315,10 +315,10 @@ questions:
       - variable: defaultSettings.defaultControlPath
         label: Default Control Path
         description: >-
-          Default path to use for storing runtime and control-plane artifacts on a host. This setting must be an absolute directory path. Engine binaries, metadata, sockets, and logs are stored under this path. The default value is "/var/lib/longhorn/".
+          Default path to use for storing runtime and control-plane artifacts on a host. This setting must be an absolute directory path. Engine binaries, metadata, sockets, and logs are stored under this path. The default value is "/data/longhorn/".
         group: Longhorn Default Settings
         type: string
-        default: /var/lib/longhorn/
+        default: /data/longhorn/
       - variable: defaultSettings.defaultDataLocality
         label: Default Data Locality
         description: >-

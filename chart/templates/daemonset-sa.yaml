@@ -19,7 +19,7 @@ spec:
       {{- end }}
     spec:
       {{- $longhornDataPath := default "/var/lib/longhorn/" .Values.defaultSettings.defaultDataPath }}
-      {{- $longhornControlPath := default "/var/lib/longhorn/" .Values.defaultSettings.defaultControlPath }}
+      {{- $longhornControlPath := default "/data/longhorn/" .Values.defaultSettings.defaultControlPath }}
       containers:
       - name: longhorn-manager
         image: {{ with (coalesce .Values.global.imageRegistry (include "registry_url" .) .Values.image.longhorn.manager.registry) }}{{ . }}/{{ end }}{{ .Values.image.longhorn.manager.repository }}:{{ .Values.image.longhorn.manager.tag }}
