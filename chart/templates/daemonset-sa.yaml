@@ -19,7 +19,7 @@ spec:
       {{- end }}
     spec:
       {{- $longhornDataPath := default "/var/lib/longhorn/" .Values.defaultSettings.defaultDataPath }}
-      {{- $longhornControlPath := default "/var/lib/longhorn/" .Values.defaultSettings.defaultControlPath }}
+      {{- $longhornControlPath := default "/var/lib/longhorn/" .Values.defaultSettings.defaultControlPath }}      
       containers:
       - name: longhorn-manager
         image: {{ with (coalesce .Values.global.imageRegistry (include "registry_url" .) .Values.image.longhorn.manager.registry "docker.io") }}{{ . }}/{{ end }}{{ .Values.image.longhorn.manager.repository }}:{{ .Values.image.longhorn.manager.tag }}
@@ -104,10 +104,6 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: spec.nodeName
-        - name: LONGHORN_DATA_PATH
-          value: {{ $longhornDataPath | quote }}
-        - name: LONGHORN_CONTROL_PATH
-          value: {{ $longhornControlPath | quote }}
         {{- if .Values.longhornManager.distro }}
         - name: LONGHORN_DISTRO
           value: {{ .Values.longhornManager.distro | quote }}
