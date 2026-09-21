@@ -5558,7 +5558,7 @@ spec:
     spec:
       containers:
       - name: longhorn-manager
-        image: docker.io/longhornio/longhorn-manager:v1.12.x-head
+        image: docker.io/davidcheng0922/longhorn-manager:0921-1.12.2
         imagePullPolicy: IfNotPresent
         securityContext:
           privileged: true
@@ -5577,7 +5577,7 @@ spec:
         - --support-bundle-manager-image
         - "docker.io/longhornio/support-bundle-kit:v0.0.92"
         - --manager-image
-        - "docker.io/longhornio/longhorn-manager:v1.12.x-head"
+        - "docker.io/davidcheng0922/longhorn-manager:0921-1.12.2"
         - --service-account
         - longhorn-service-account
         - --upgrade-version-check
@@ -5685,18 +5685,18 @@ spec:
     spec:
       initContainers:
         - name: wait-longhorn-manager
-          image: docker.io/longhornio/longhorn-manager:v1.12.x-head
+          image: docker.io/davidcheng0922/longhorn-manager:0921-1.12.2
           command: ['sh', '-c', 'while [ $(curl -m 1 -s -o /dev/null -w "%{http_code}" http://longhorn-backend:9500/v1) != "200" ]; do echo waiting; sleep 2; done']
       containers:
         - name: longhorn-driver-deployer
-          image: docker.io/longhornio/longhorn-manager:v1.12.x-head
+          image: docker.io/davidcheng0922/longhorn-manager:0921-1.12.2
           imagePullPolicy: IfNotPresent
           command:
           - longhorn-manager
           - -d
           - deploy-driver
           - --manager-image
-          - "docker.io/longhornio/longhorn-manager:v1.12.x-head"
+          - "docker.io/davidcheng0922/longhorn-manager:0921-1.12.2"
           - --manager-url
           - http://longhorn-backend:9500/v1
           env:

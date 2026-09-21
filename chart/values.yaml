@@ -60,9 +60,9 @@ image:
       # -- Registry for the Longhorn Manager image.
       registry: ""
       # -- Repository for the Longhorn Manager image.
-      repository: longhornio/longhorn-manager
+      repository: davidcheng0922/longhorn-manager
       # -- Tag for the Longhorn Manager image.
-      tag: v1.12.x-head
+      tag: 0921-1.12.2
     ui:
       # -- Registry for the Longhorn UI image.
       registry: ""
